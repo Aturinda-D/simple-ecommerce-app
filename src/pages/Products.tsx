@@ -42,6 +42,7 @@ const Products = () => {
       <section className="p-10 grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-5">
         {filteredProducts?.map((product, index) => (
           <Product
+            id={product.id}
             title={product.title}
             image={product.image}
             price={product.price}
