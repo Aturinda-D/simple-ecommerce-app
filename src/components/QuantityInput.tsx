@@ -1,8 +1,15 @@
 import React from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
 
-const QuantityInput = () => {
-  const [quantity, setQuantity] = React.useState<number>(1);
+type quantityInputProps = {
+  quantity: number;
+  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+};
+
+const QuantityInput: React.FC<quantityInputProps> = ({
+  quantity,
+  setQuantity,
+}) => {
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
     if (isNaN(value) || value === 0) {

@@ -3,6 +3,8 @@ import type { productType } from "../temporary/products.dummy";
 import QuantityInput from "./QuantityInput";
 
 const ProductInCart: React.FC<productType> = ({ ...props }) => {
+  const [quantity, setQuantity] = React.useState<number>(1);
+
   return (
     <div className="min-h-30 flex justify-between items-center bg-gray-100 shadow">
       <div className="h-full w-fit flex">
@@ -18,9 +20,9 @@ const ProductInCart: React.FC<productType> = ({ ...props }) => {
         </div>
       </div>
       <div className="w-2/5 flex justify-between items-center">
-        <QuantityInput />
+        <QuantityInput quantity={quantity} setQuantity={setQuantity} />
         <h4 className="pr-4 text-black text-lg font-semibold">
-          ${props.price}
+          ${props.price * (isNaN(quantity) ? 0 : quantity)}
         </h4>
       </div>
     </div>
