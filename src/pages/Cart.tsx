@@ -12,7 +12,7 @@ const Cart = () => {
         </div>
       </div>
       <div className="my-4 flex flex-col gap-5">
-        {sampleProducts?.map((product) => (
+        {sampleProducts?.slice(0, 3).map((product) => (
           <ProductInCart
             id={product?.id}
             image={product?.image}
