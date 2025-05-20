@@ -6,7 +6,7 @@
 
 const Product = () => {
   return (
-    <div className="grid grid-cols-1">
+    <div className="grid grid-cols-1 rounded-[20px]">
       <img src="/assets/images/bag_1.jpg" alt="" />
       <h4 className=" --accent-1">image title</h4>
       <p className=" --accent-1">price</p>
