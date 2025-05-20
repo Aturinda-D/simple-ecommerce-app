@@ -1,5 +1,28 @@
+import ProductInCart from "../components/ProductInCart";
+import sampleProducts from "../temporary/products.dummy";
+
 const Cart = () => {
-  return <div>Cart</div>;
+  return (
+    <div className="p-10">
+      <div className="bg-[var(--accent-1)] py-2 px-3 text-white text-lg font-medium capitalize flex justify-between items-center">
+        <h4>product</h4>
+        <div className="w-2/5 flex justify-between items-center">
+          <h4>quantity</h4>
+          <h4>subtotal</h4>
+        </div>
+      </div>
+      <div className="my-4 flex flex-col gap-5">
+        {sampleProducts?.slice(0, 3).map((product) => (
+          <ProductInCart
+            id={product?.id}
+            image={product?.image}
+            title={product?.title}
+            price={product?.price}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default Cart;
