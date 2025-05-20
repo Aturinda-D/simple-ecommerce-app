@@ -7,7 +7,7 @@ type productProps = {
 };
 const Product: React.FC<productProps> = ({ ...props }) => {
   return (
-    <div className="min-h-100 flex flex-col gap-2 bg-white">
+    <div className="min-h-100 max-w-80 flex flex-col gap-2 bg-white">
       <div
         style={{ backgroundImage: `url(${props.image})` }}
         className={`h-2/3 bg-cover bg-center bg-no-repeat`}
