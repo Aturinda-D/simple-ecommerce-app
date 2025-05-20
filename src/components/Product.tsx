@@ -7,11 +7,18 @@ type productProps = {
 };
 const Product: React.FC<productProps> = ({ ...props }) => {
   return (
-    <div className="grid grid-cols-1">
-      {/* PROVIDE WIDTH AND HEIGHT FOR THE IMAGES */}
-      <img src={props?.image} alt="" />
-      <h4 className=" --accent-1">{props?.title}</h4>
-      <p className=" --accent-1">{props?.price}</p>
+    <div className="min-h-100 flex flex-col gap-2 bg-white">
+      <div
+        style={{ backgroundImage: `url(${props.image})` }}
+        className={`h-2/3 bg-cover bg-center bg-no-repeat`}
+      ></div>
+      <h4 className="mx-3 text-xl text-black font-semibold">{props?.title}</h4>
+      <p className="mx-3 text-sm text-[var(--accent-1)] font-semibold">
+        ${props?.price}
+      </p>
+      <button className="w-fit mt-auto ml-auto mr-3 mb-3 py-2 px-4 bg-[var(--accent-1)] rounded-xl text-white font-semibold text-[16px]">
+        Add to cart
+      </button>
     </div>
   );
 };
