@@ -2,6 +2,7 @@ import { FaArrowRight } from "react-icons/fa";
 import ProductInCart from "../components/ProductInCart";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartData = useSelector((state: RootState) => state.cart);
@@ -33,16 +34,17 @@ const Cart = () => {
             $
             {cartData
               .map((item) => item.quantity * item.price)
-              .reduce((prev, curr) => prev + curr)}
+              .reduce((prev, curr) => prev + curr, 0)}
           </h4>
         </div>
-        <button
-          onClick={() => console.log(cartData)}
+        <a
+          href={"checkout"}
+          // onClick={() => console.log(cartData)}
           className="px-6 py-2 ml-auto w-fit inline-flex justify-center items-center gap-3 text-white bg-[var(--accent-1)] font-semibold rounded-full hover:cursor-pointer hover:opacity-90"
         >
           Proceed to checkout
           <FaArrowRight />
-        </button>
+        </a>
       </div>
     </div>
   );
