@@ -5,7 +5,7 @@ import sampleProducts from "../temporary/products.dummy";
 const Cart = () => {
   return (
     <div className="p-10">
-      <div className="bg-[var(--accent-1)] py-2 px-3 text-white text-lg font-medium capitalize flex justify-between items-center">
+      <div className="bg-[var(--accent-1)] py-2 px-3 text-white text-lg font-medium capitalize flex justify-between items-center ">
         <h4>product</h4>
         <div className="w-2/5 flex justify-between items-center">
           <h4>quantity</h4>

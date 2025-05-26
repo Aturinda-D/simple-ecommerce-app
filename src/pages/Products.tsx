@@ -39,16 +39,18 @@ const Products = () => {
           className="absolute top-1/2 -translate-y-1/2 right-4 text-[var(--accent-1)]"
         />
       </form>
-      <section className="p-10 grid grid-cols-[repeat(auto-fit,minmax(230px,1fr))] gap-5">
-        {filteredProducts?.map((product, index) => (
-          <Product
-            id={product.id}
-            title={product.title}
-            image={product.image}
-            price={product.price}
-            key={index}
-          />
-        ))}
+      <section className="p-4">
+        <div className=" grid sm:grid-cols-3  lg:grid-cols-4 p-5  justify-center  gap-5">
+          {filteredProducts?.map((product, index) => (
+            <Product
+              id={product.id}
+              title={product.title}
+              image={product.image}
+              price={product.price}
+              key={index}
+            />
+          ))}
+        </div>
       </section>
     </>
   );
