@@ -31,6 +31,7 @@ const Products = () => {
         <input
           type="text"
           value={searchValue}
+          placeholder="Your dream product awaits you..."
           onChange={handleSearchChange}
           className="w-full h-full p-5 text-lg text-gray-700 font-semibold bg-white shadow-md focus:border-2 border-[var(--accent-1)] rounded-full focus:outline-0"
         />

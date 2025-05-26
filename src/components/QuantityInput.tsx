@@ -1,36 +1,39 @@
 import React from "react";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import type { AppDispatch } from "../redux/store";
 
 type quantityInputProps = {
+  productId: number;
   quantity: number;
-  setQuantity: React.Dispatch<React.SetStateAction<number>>;
+  dispatch: AppDispatch;
 };
 
 const QuantityInput: React.FC<quantityInputProps> = ({
+  productId,
   quantity,
-  setQuantity,
+  dispatch,
 }) => {
   const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value);
     if (isNaN(value) || value === 0) {
-      setQuantity(1);
+      dispatch({ type: "cart/update", payload: [productId, 1] });
     }
   };
+
   const handleQuantityChange = (type: string) => {
     switch (type) {
       case "add":
-        setQuantity((prevState) => prevState + 1);
+        dispatch({ type: "cart/update", payload: [productId, quantity + 1] });
         break;
       case "subtract":
         if (quantity - 1 <= 0) {
           return;
         } else {
-          setQuantity((prevState) => prevState - 1);
+          dispatch({ type: "cart/update", payload: [productId, quantity - 1] });
         }
         break;
       default:
-        setQuantity(1);
-        break;
+        dispatch({ type: "cart/update", payload: [productId, 1] });
     }
   };
   return (
@@ -49,7 +52,10 @@ const QuantityInput: React.FC<quantityInputProps> = ({
         value={quantity}
         className="w-20 px-1 py-1.5 text-black text-center font-semibold bg-transparent focus:outline-0"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setQuantity(parseInt(e.target.value))
+          dispatch({
+            type: "cart/update",
+            payload: [productId, parseInt(e.target.value)],
+          })
         }
         onBlur={handleBlur}
       />

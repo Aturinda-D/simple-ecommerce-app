@@ -1,13 +1,15 @@
 export type CartItem = {
-  id: string;
-  name: string;
+  id: number;
+  title: string;
+  image: string;
   price: number;
   quantity: number;
 };
 type Action =
   | { type: "cart/get" }
   | { type: "cart/add"; payload: CartItem }
-  | { type: "cart/delete"; payload: string }
+  | { type: "cart/delete"; payload: number }
+  | { type: "cart/update"; payload: number[] }
   | { type: string; payload?: any };
 
 const CartReducer = (state: CartItem[] = [], action: Action) => {
@@ -20,6 +22,14 @@ const CartReducer = (state: CartItem[] = [], action: Action) => {
 
     case "cart/delete":
       return state.filter((item) => item.id !== action.payload);
+
+    case "cart/update":
+      return state.map((item) => {
+        if (item.id === action.payload[0]) {
+          return { ...item, quantity: action.payload[1] };
+        }
+        return item;
+      });
 
     default:
       return state;

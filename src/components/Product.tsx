@@ -1,9 +1,19 @@
 import type React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { productType } from "../temporary/products.dummy";
+import type { RootState } from "../redux/store";
 
 const Product: React.FC<productType> = ({ ...props }) => {
   const dispatch = useDispatch();
+  const cart = useSelector((state: RootState) => state.cart);
+  const cartIncludesItem = cart?.some((item) => item.id === props.id);
+  const handleOnClick = () => {
+    if (cartIncludesItem) {
+      dispatch({ type: "cart/delete", payload: props.id });
+    } else {
+      dispatch({ type: "cart/add", payload: { ...props, quantity: 1 } });
+    }
+  };
   return (
     <div className="min-h-100 max-w-80 flex flex-col gap-2 bg-white rounded-[15px] shadow ">
       <div
@@ -15,12 +25,10 @@ const Product: React.FC<productType> = ({ ...props }) => {
         ${props?.price}
       </p>
       <button
-        onClick={() =>
-          dispatch({ type: "cart/add", payload: { ...props, quantity: 1 } })
-        }
-        className="w-fit mt-auto ml-auto mr-3 mb-3 py-2 px-4 bg-[var(--accent-1)] rounded-xl text-white font-semibold text-[16px]"
+        onClick={handleOnClick}
+        className="w-fit mt-auto ml-auto mr-3 mb-3 py-2 px-4 bg-[var(--accent-1)] rounded-xl text-white font-semibold text-[16px] cursor-pointer active:brightness-90"
       >
-        Add to cart
+        {cartIncludesItem ? "Remove from cart" : "Add to cart"}
       </button>
     </div>
   );

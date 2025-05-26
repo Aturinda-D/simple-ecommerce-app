@@ -1,8 +1,10 @@
 import { FaArrowRight } from "react-icons/fa";
 import ProductInCart from "../components/ProductInCart";
-import sampleProducts from "../temporary/products.dummy";
+import { useSelector } from "react-redux";
+import type { RootState } from "../redux/store";
 
 const Cart = () => {
+  const cartData = useSelector((state: RootState) => state.cart);
   return (
     <div className="p-10">
       <div className="bg-[var(--accent-1)] py-2 px-3 text-white text-lg font-medium capitalize flex justify-between items-center ">
@@ -13,12 +15,14 @@ const Cart = () => {
         </div>
       </div>
       <div className="my-4 flex flex-col gap-5">
-        {sampleProducts?.slice(0, 3).map((product) => (
+        {cartData?.map((product) => (
           <ProductInCart
+            key={product?.id}
             id={product?.id}
             image={product?.image}
             title={product?.title}
             price={product?.price}
+            quantity={product?.quantity}
           />
         ))}
       </div>

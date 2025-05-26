@@ -1,10 +1,10 @@
 import React from "react";
-import type { productType } from "../temporary/products.dummy";
 import QuantityInput from "./QuantityInput";
+import type { CartItem } from "../redux/slice";
+import { useDispatch } from "react-redux";
 
-const ProductInCart: React.FC<productType> = ({ ...props }) => {
-  const [quantity, setQuantity] = React.useState<number>(1);
-
+const ProductInCart: React.FC<CartItem> = ({ ...props }) => {
+  const dispatch = useDispatch();
   return (
     <div className="min-h-30 flex justify-between items-center bg-white shadow">
       <div className="h-full w-fit flex">
@@ -14,15 +14,24 @@ const ProductInCart: React.FC<productType> = ({ ...props }) => {
           <h4 className="text-[16px] text-black font-normal">
             Price: ${props.price}
           </h4>
-          <button className="text-[var(--accent-1)] font-medium cursor-pointer hover:underline">
+          <button
+            className="text-[var(--accent-1)] font-medium cursor-pointer hover:underline"
+            onClick={() =>
+              dispatch({ type: "cart/delete", payload: props?.id })
+            }
+          >
             Remove
           </button>
         </div>
       </div>
       <div className="w-2/5 flex justify-between items-center">
-        <QuantityInput quantity={quantity} setQuantity={setQuantity} />
+        <QuantityInput
+          productId={props?.id}
+          quantity={props?.quantity}
+          dispatch={dispatch}
+        />
         <h4 className="pr-4 text-black text-lg font-semibold">
-          ${props.price * (isNaN(quantity) ? 0 : quantity)}
+          ${props.price * (isNaN(props?.quantity) ? 0 : props?.quantity)}
         </h4>
       </div>
     </div>
