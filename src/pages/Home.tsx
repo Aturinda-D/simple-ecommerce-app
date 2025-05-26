@@ -12,7 +12,7 @@ const Home = () => {
         Discover the best products in the market with us!
       </p>
       <button
-        className="bg-white mt-5 inline-flex items-center gap-2 px-6 py-3 font-bold text-xl text-[var(--accent-1)] rounded-full"
+        className="bg-white mt-5 inline-flex items-center gap-2 px-6 py-3 font-bold text-xl text-[var(--accent-1)] rounded-full cursor-pointer"
         onClick={() => navigate("products")}
       >
         Get started

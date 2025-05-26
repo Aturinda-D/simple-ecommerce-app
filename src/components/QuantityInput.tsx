@@ -39,7 +39,7 @@ const QuantityInput: React.FC<quantityInputProps> = ({
       className="flex *:border-y *:p-2.5"
     >
       <button
-        className="active:bg-gray-300"
+        className="active:bg-gray-200"
         onClick={() => handleQuantityChange("subtract")}
       >
         {<FaMinus size={10} />}
@@ -47,7 +47,7 @@ const QuantityInput: React.FC<quantityInputProps> = ({
       <input
         type="number"
         value={quantity}
-        className="w-20 px-1 py-1.5 text-black text-center font-semibold bg-gray-100 focus:outline-0"
+        className="w-20 px-1 py-1.5 text-black text-center font-semibold bg-transparent focus:outline-0"
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setQuantity(parseInt(e.target.value))
         }

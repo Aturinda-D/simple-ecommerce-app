@@ -6,7 +6,7 @@ const ProductInCart: React.FC<productType> = ({ ...props }) => {
   const [quantity, setQuantity] = React.useState<number>(1);
 
   return (
-    <div className="min-h-30 flex justify-between items-center bg-gray-100 shadow">
+    <div className="min-h-30 flex justify-between items-center bg-white shadow">
       <div className="h-full w-fit flex">
         <img className="w-30 h-30" src={props.image} alt="" />
         <div className="ml-3 p-3 flex flex-col gap-1 justify-center items-start">
