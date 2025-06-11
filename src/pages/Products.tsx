@@ -17,7 +17,16 @@ const Products = () => {
   };
 
   React.useEffect(() => {
-    setFilteredProducts(sampleProducts);
+    fetch("http://127.0.0.1:8000/products/")
+      .then((response) => response.json())
+      .then((products) => {
+        setFilteredProducts(products);
+        console.log(products);
+      })
+      .catch((error) => {
+        console.error("Error fetching products:", error);
+      });
+    // setFilteredProducts(sampleProducts);
   }, []);
   return (
     <>

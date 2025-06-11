@@ -2,7 +2,6 @@ import { FaArrowRight } from "react-icons/fa";
 import ProductInCart from "../components/ProductInCart";
 import { useSelector } from "react-redux";
 import type { RootState } from "../redux/store";
-import { Link } from "react-router-dom";
 
 const Cart = () => {
   const cartData = useSelector((state: RootState) => state.cart);
